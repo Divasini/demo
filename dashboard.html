@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | StartupSphere</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Fix Bootstrap overriding input text color ── */
+    .form-control,
+    .form-control:focus,
+    input.form-control,
+    textarea.form-control {
+      color: #f0f0ff !important;
+      -webkit-text-fill-color: #f0f0ff !important;
+      background: rgba(255,255,255,0.07) !important;
+      caret-color: #b39dff !important;
+    }
+    [data-theme="light"] .form-control,
+    [data-theme="light"] .form-control:focus {
+      color: #100f2e !important;
+      -webkit-text-fill-color: #100f2e !important;
+      background: #ffffff !important;
+      caret-color: #5148e8 !important;
+    }
+    .form-control::placeholder {
+      color: rgba(180,180,240,0.45) !important;
+      opacity: 1;
+    }
+
+    /* ── Highlight matched search row ── */
+    tbody tr { transition: background 0.2s ease; }
+    tbody tr.hidden-row { display: none; }
+    .search-highlight {
+      background: rgba(108,99,255,0.10) !important;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+<nav class="navbar premium-nav">
+  <div class="container">
+    <a class="logo" href="index.html"><i class="fa-solid fa-rocket"></i> StartupSphere</a>
+    <div class="nav-menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="ideas.html"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+      <a href="forum.html"><i class="fa-solid fa-users"></i> Community</a>
+      <a href="dashboard.html" class="active"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">Login</a>
+      <a href="signup.html" class="btn btn-primary">Get Started</a>
+      <button onclick="toggleTheme()" class="btn btn-dark theme-toggle-btn">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container section">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;flex-wrap:wrap;gap:12px;">
+    <div>
+      <h2 style="font-size:26px;margin-bottom:4px;">Admin Control Panel ⚙️</h2>
+      <p class="muted">Welcome back, Arjun. Here's what's happening.</p>
+    </div>
+    <a href="submit-idea.html" class="btn btn-primary">+ Submit New Idea</a>
+  </div>
+
+  <!-- ANALYTICS CARDS -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:28px;margin-bottom:8px;">👥</div>
+        <h2 class="counter" data-target="12500">0</h2>
+        <p class="muted">Total Users</p>
+        <span style="font-size:12px;color:#10b981;">▲ +12% this month</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:28px;margin-bottom:8px;">💡</div>
+        <h2 class="counter" data-target="8400">0</h2>
+        <p class="muted">Startup Ideas</p>
+        <span style="font-size:12px;color:#10b981;">▲ +8% this month</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:28px;margin-bottom:8px;">⚡</div>
+        <h2 class="counter" data-target="3200">0</h2>
+        <p class="muted">Active Users</p>
+        <span style="font-size:12px;color:#10b981;">▲ +5% this week</span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:28px;margin-bottom:8px;">🚨</div>
+        <h2 class="counter" data-target="95">0</h2>
+        <p class="muted">Reports</p>
+        <span style="font-size:12px;color:#ef4444;">▼ Needs review</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER MANAGEMENT TABLE -->
+  <div class="section">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+      <div>
+        <h4>User Management</h4>
+        <p class="muted" style="font-size:12px;margin-top:4px;" id="search-result-text">Showing all 4 users</p>
+      </div>
+      <div style="position:relative;max-width:260px;width:100%;">
+        <i class="fa-solid fa-magnifying-glass" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:13px;pointer-events:none;"></i>
+        <input
+          id="user-search"
+          class="form-control"
+          placeholder="Search by name or email..."
+          style="padding-left:34px;"
+          oninput="searchUsers(this.value)"
+        >
+      </div>
+    </div>
+
+    <!-- No results message -->
+    <div id="no-results" style="display:none;text-align:center;padding:32px;color:var(--text3);font-size:14px;">
+      😕 No users found matching "<span id="no-results-query"></span>"
+    </div>
+
+    <div class="glass-card" style="overflow-x:auto;padding:0;">
+      <table class="table table-dark table-hover" style="margin:0;">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Ideas</th>
+            <th>Status</th>
+            <th>Joined</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="user-table-body">
+          <tr data-name="arjun kumar" data-email="arjun@gmail.com">
+            <td style="color:var(--text3);">#101</td>
+            <td><strong>Arjun Kumar</strong></td>
+            <td style="color:var(--text2);">arjun@gmail.com</td>
+            <td>24</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td style="color:var(--text3);">Jan 2026</td>
+            <td><button class="btn btn-sm btn-danger" onclick="blockUser(this)">Block</button></td>
+          </tr>
+          <tr data-name="meena priya" data-email="meena@gmail.com">
+            <td style="color:var(--text3);">#102</td>
+            <td><strong>Meena Priya</strong></td>
+            <td style="color:var(--text2);">meena@gmail.com</td>
+            <td>12</td>
+            <td><span class="badge bg-warning text-dark">Pending</span></td>
+            <td style="color:var(--text3);">Feb 2026</td>
+            <td><button class="btn btn-sm btn-success" onclick="approveUser(this)">Approve</button></td>
+          </tr>
+          <tr data-name="rahul v" data-email="rahul@gmail.com">
+            <td style="color:var(--text3);">#103</td>
+            <td><strong>Rahul V</strong></td>
+            <td style="color:var(--text2);">rahul@gmail.com</td>
+            <td>7</td>
+            <td><span class="badge bg-danger">Blocked</span></td>
+            <td style="color:var(--text3);">Mar 2026</td>
+            <td><button class="btn btn-sm btn-primary" onclick="unblockUser(this)">Unblock</button></td>
+          </tr>
+          <tr data-name="priya s" data-email="priya@gmail.com">
+            <td style="color:var(--text3);">#104</td>
+            <td><strong>Priya S</strong></td>
+            <td style="color:var(--text2);">priya@gmail.com</td>
+            <td>18</td>
+            <td><span class="badge bg-success">Active</span></td>
+            <td style="color:var(--text3);">Jan 2026</td>
+            <td><button class="btn btn-sm btn-danger" onclick="blockUser(this)">Block</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- IDEA MANAGEMENT -->
+  <div class="section">
+    <h4 class="mb-3">Startup Idea Management</h4>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span class="badge bg-warning text-dark">Pending Review</span>
+            <span style="font-size:12px;color:var(--text3);">2 hours ago</span>
+          </div>
+          <h5 style="margin-bottom:4px;">AI Tutor App</h5>
+          <p class="muted" style="margin-bottom:16px;">Category: Education · by Arjun Kumar</p>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-sm btn-success" style="flex:1;" onclick="approveIdea(this)">✅ Approve</button>
+            <button class="btn btn-sm btn-danger" style="flex:1;" onclick="rejectIdea(this)">❌ Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span class="badge bg-warning text-dark">Pending Review</span>
+            <span style="font-size:12px;color:var(--text3);">5 hours ago</span>
+          </div>
+          <h5 style="margin-bottom:4px;">Smart Farming AI</h5>
+          <p class="muted" style="margin-bottom:16px;">Category: Agriculture · by Meena</p>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-sm btn-success" style="flex:1;" onclick="approveIdea(this)">✅ Approve</button>
+            <button class="btn btn-sm btn-danger" style="flex:1;" onclick="rejectIdea(this)">❌ Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+            <span class="badge bg-warning text-dark">Pending Review</span>
+            <span style="font-size:12px;color:var(--text3);">1 day ago</span>
+          </div>
+          <h5 style="margin-bottom:4px;">Eco Delivery System</h5>
+          <p class="muted" style="margin-bottom:16px;">Category: Sustainability · by Rahul</p>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-sm btn-success" style="flex:1;" onclick="approveIdea(this)">✅ Approve</button>
+            <button class="btn btn-sm btn-danger" style="flex:1;" onclick="rejectIdea(this)">❌ Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTS -->
+  <div class="section">
+    <h4 class="mb-3">Reports & Analytics</h4>
+    <div class="glass-card reports-card" data-reveal>
+      <p>📈 User Growth: <strong style="color:#10b981;">+12% this month</strong> — Increasing steadily</p>
+      <p>💡 Idea Submissions: <strong style="color:#a78bfa;">High Activity</strong> — 340 new this week</p>
+      <p>🔥 Engagement Rate: <strong style="color:#f59e0b;">78%</strong> — Above industry average</p>
+      <p>🌎 Top Countries: <strong style="color:var(--text);">India, USA, UK, Germany, Canada</strong></p>
+      <p>🚀 Startup Launches: <strong style="color:#10b981;">28 this month</strong> — New record!</p>
+    </div>
+  </div>
+
+</div>
+
+<footer><p>© 2026 StartupSphere. Built for innovators 🚀</p></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+
+  /* ── USER SEARCH ── */
+  function searchUsers(query) {
+    const q = query.toLowerCase().trim();
+    const rows = document.querySelectorAll('#user-table-body tr');
+    const resultText = document.getElementById('search-result-text');
+    const noResults  = document.getElementById('no-results');
+    const noQ        = document.getElementById('no-results-query');
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const name  = row.getAttribute('data-name')  || '';
+      const email = row.getAttribute('data-email') || '';
+      const match = name.includes(q) || email.includes(q);
+
+      if (match) {
+        row.classList.remove('hidden-row');
+        // Highlight row if actively searching
+        row.classList.toggle('search-highlight', q.length > 0);
+        visibleCount++;
+      } else {
+        row.classList.add('hidden-row');
+        row.classList.remove('search-highlight');
+      }
+    });
+
+    // Update result count text
+    if (q === '') {
+      resultText.textContent = `Showing all ${rows.length} users`;
+      noResults.style.display = 'none';
+    } else if (visibleCount === 0) {
+      resultText.textContent = 'No users found';
+      noQ.textContent = query;
+      noResults.style.display = 'block';
+    } else {
+      resultText.textContent = `Found ${visibleCount} user${visibleCount > 1 ? 's' : ''} for "${query}"`;
+      noResults.style.display = 'none';
+    }
+  }
+
+  /* ── USER ACTION BUTTONS ── */
+  function blockUser(btn) {
+    const row = btn.closest('tr');
+    const badge = row.querySelector('.badge');
+    badge.textContent = 'Blocked';
+    badge.className = 'badge bg-danger';
+    btn.textContent = 'Unblock';
+    btn.className = 'btn btn-sm btn-primary';
+    btn.onclick = function(){ unblockUser(this); };
+  }
+
+  function approveUser(btn) {
+    const row = btn.closest('tr');
+    const badge = row.querySelector('.badge');
+    badge.textContent = 'Active';
+    badge.className = 'badge bg-success';
+    btn.textContent = 'Block';
+    btn.className = 'btn btn-sm btn-danger';
+    btn.onclick = function(){ blockUser(this); };
+  }
+
+  function unblockUser(btn) {
+    const row = btn.closest('tr');
+    const badge = row.querySelector('.badge');
+    badge.textContent = 'Active';
+    badge.className = 'badge bg-success';
+    btn.textContent = 'Block';
+    btn.className = 'btn btn-sm btn-danger';
+    btn.onclick = function(){ blockUser(this); };
+  }
+
+  /* ── IDEA APPROVE / REJECT ── */
+  function approveIdea(btn) {
+    const card  = btn.closest('.glass-card');
+    const badge = card.querySelector('.badge');
+    badge.textContent = 'Approved';
+    badge.className = 'badge bg-success';
+    btn.closest('div').innerHTML = '<span style="color:#10b981;font-size:13px;font-weight:600;">✅ Idea Approved</span>';
+  }
+
+  function rejectIdea(btn) {
+    const card  = btn.closest('.glass-card');
+    const badge = card.querySelector('.badge');
+    badge.textContent = 'Rejected';
+    badge.className = 'badge bg-danger';
+    btn.closest('div').innerHTML = '<span style="color:#ef4444;font-size:13px;font-weight:600;">❌ Idea Rejected</span>';
+  }
+
+</script>
+</body>
+</html>

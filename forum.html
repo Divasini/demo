@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community | StartupSphere</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body data-theme="dark">
+    <nav class="navbar premium-nav">
+      <div class="container">
+        <a class="logo" href="index.html"><i class="fa-solid fa-rocket"></i> StartupSphere</a>
+        <div class="nav-menu">
+          <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="ideas.html"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+          <a href="forum.html" class="active"><i class="fa-solid fa-users"></i> Community</a>
+          <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+        </div>
+        <div class="nav-actions">
+          <a href="login.html" class="login-btn">Login</a>
+          <a href="signup.html" class="btn btn-primary">Get Started</a>
+          <button onclick="toggleTheme()" class="btn btn-dark theme-toggle-btn">🌙</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container section">
+      <!-- HEADER -->
+      <div class="glass-card mb-4" style="animation: fadeUp 0.6s ease both">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+          <div>
+            <h2 style="margin-bottom:6px">🌐 Community Forum</h2>
+            <p class="muted">Connect, discuss, and collaborate with startup founders worldwide.</p>
+          </div>
+          <button class="btn btn-primary" onclick="toggleNewPostForm()">+ New Post</button>
+        </div>
+
+        <!-- NEW POST FORM -->
+        <div id="new-post-form" style="display:none;margin-top:20px;border-top:1px solid var(--border);padding-top:20px;">
+          <div class="mb-3">
+            <input id="new-post-title" class="form-control" placeholder="Post title..." style="margin-bottom:10px" />
+            <textarea id="new-post-body" class="form-control" rows="3" placeholder="Share your thoughts, questions, or ideas..."></textarea>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+            <select id="new-post-category" class="form-control" style="width:auto;">
+              <option>General</option>
+              <option>Ideas</option>
+              <option>Co-founder Search</option>
+              <option>Funding</option>
+            </select>
+            <button class="btn btn-primary btn-sm" onclick="postThread()">Post</button>
+            <button class="btn btn-sm" style="background:var(--card);border:1px solid var(--border);color:var(--text);" onclick="toggleNewPostForm()">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <!-- THREADS LIST — full width -->
+        <div style="width:100%;">
+          <!-- TABS -->
+          <div style="display:flex;gap:4px;margin-bottom:20px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:4px;">
+            <button class="forum-tab active" onclick="setTab(this,'all')" style="flex:1;padding:8px;border:none;background:var(--accent-grad);color:#fff;border-radius:9px;font-size:13px;cursor:pointer;font-weight:600;">All Posts</button>
+            <button class="forum-tab" onclick="setTab(this,'trending')" style="flex:1;padding:8px;border:none;background:transparent;color:var(--text2);border-radius:9px;font-size:13px;cursor:pointer;">Trending</button>
+            <button class="forum-tab" onclick="setTab(this,'new')" style="flex:1;padding:8px;border:none;background:transparent;color:var(--text2);border-radius:9px;font-size:13px;cursor:pointer;">Newest</button>
+          </div>
+
+          <!-- THREADS -->
+          <div style="display:flex;flex-direction:column;gap:12px;" id="threads-list">
+
+            <!-- Thread 1 -->
+            <div class="glass-card" data-reveal>
+              <div style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;" onclick="toggleReplies('replies-1')">
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;flex-shrink:0;">AK</div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text);">Arjun Kumar</span>
+                    <span class="badge bg-primary">Co-founder Search</span>
+                    <span style="font-size:12px;color:var(--text3);">2 hours ago</span>
+                  </div>
+                  <h5 style="font-size:15px;margin-bottom:6px;">Looking for a technical co-founder for my AI EdTech startup!</h5>
+                  <p style="font-size:13px;color:var(--text2);">I have built the MVP and got initial traction with 200+ users. Looking for a React/Python developer with startup mindset...</p>
+                  <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text3);">
+                    <span>👍 24 Likes</span><span id="reply-count-replies-1">💬 1 Reply</span><span>👀 340 Views</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- REPLIES SECTION -->
+              <div id="replies-1" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+                <!-- Existing reply -->
+                <div class="reply-msg" style="display:flex;gap:10px;margin-bottom:12px;">
+                  <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;">MP</div>
+                  <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;flex:1;">
+                    <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Meena Priya <span style="font-weight:400;color:var(--text3);">· 1 hour ago</span></div>
+                    <p style="font-size:13px;color:var(--text2);margin:0;">I'm a React + Python dev with 3 years experience. DM me!</p>
+                  </div>
+                </div>
+
+                <!-- Dynamic replies go here -->
+                <div id="dynamic-replies-1"></div>
+
+                <!-- Reply input -->
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                  <input id="reply-input-replies-1" class="form-control" placeholder="Write a reply..." style="font-size:13px;" onkeydown="if(event.key==='Enter')sendReply('replies-1','You')" />
+                  <button class="btn btn-primary btn-sm" onclick="sendReply('replies-1','You')">Send</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thread 2 -->
+            <div class="glass-card" data-reveal>
+              <div style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;" onclick="toggleReplies('replies-2')">
+                <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;flex-shrink:0;">MP</div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text);">Meena Priya</span>
+                    <span class="badge bg-primary">Funding</span>
+                    <span style="font-size:12px;color:var(--text3);">5 hours ago</span>
+                  </div>
+                  <h5 style="font-size:15px;margin-bottom:6px;">How to pitch to angel investors in 2026?</h5>
+                  <p style="font-size:13px;color:var(--text2);">I've been preparing my pitch deck for 2 months. Any advice on what investors look for in early-stage startups today?</p>
+                  <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text3);">
+                    <span>👍 41 Likes</span><span id="reply-count-replies-2">💬 0 Replies</span><span>👀 890 Views</span>
+                  </div>
+                </div>
+              </div>
+              <div id="replies-2" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+                <div id="dynamic-replies-2"></div>
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                  <input id="reply-input-replies-2" class="form-control" placeholder="Write a reply..." style="font-size:13px;" onkeydown="if(event.key==='Enter')sendReply('replies-2','You')" />
+                  <button class="btn btn-primary btn-sm" onclick="sendReply('replies-2','You')">Send</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thread 3 -->
+            <div class="glass-card" data-reveal>
+              <div style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;" onclick="toggleReplies('replies-3')">
+                <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;flex-shrink:0;">RV</div>
+                <div style="flex:1;">
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text);">Rahul V</span>
+                    <span class="badge bg-primary">Ideas</span>
+                    <span style="font-size:12px;color:var(--text3);">1 day ago</span>
+                  </div>
+                  <h5 style="font-size:15px;margin-bottom:6px;">What startup ideas do you think will be huge in 2027?</h5>
+                  <p style="font-size:13px;color:var(--text2);">With AI evolving rapidly, I think agent-based startups will explode. What are your predictions?</p>
+                  <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text3);">
+                    <span>👍 87 Likes</span><span id="reply-count-replies-3">💬 0 Replies</span><span>👀 2.1K Views</span>
+                  </div>
+                </div>
+              </div>
+              <div id="replies-3" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+                <div id="dynamic-replies-3"></div>
+                <div style="display:flex;gap:8px;margin-top:10px;">
+                  <input id="reply-input-replies-3" class="form-control" placeholder="Write a reply..." style="font-size:13px;" onkeydown="if(event.key==='Enter')sendReply('replies-3','You')" />
+                  <button class="btn btn-primary btn-sm" onclick="sendReply('replies-3','You')">Send</button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end threads-list -->
+        </div><!-- end threads col -->
+
+        <!-- BOTTOM SECTION — Top Contributors + Trending Tags side by side -->
+        <div style="display:flex;flex-wrap:wrap;gap:16px;">
+
+          <!-- Top Contributors -->
+          <div class="glass-card" data-reveal style="flex:1;min-width:260px;">
+            <h6 style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:16px;">🏆 Top Contributors</h6>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;">AK</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);">Arjun Kumar</div><div style="font-size:12px;color:var(--text3);">24 ideas · 1.2K likes</div></div>
+                <span style="font-size:18px;">🥇</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;">MP</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);">Meena Priya</div><div style="font-size:12px;color:var(--text3);">12 ideas · 890 likes</div></div>
+                <span style="font-size:18px;">🥈</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#ef4444);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;">RV</div>
+                <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:var(--text);">Rahul V</div><div style="font-size:12px;color:var(--text3);">18 ideas · 740 likes</div></div>
+                <span style="font-size:18px;">🥉</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trending Tags -->
+          <div class="glass-card" data-reveal style="flex:1;min-width:260px;">
+            <h6 style="font-size:12px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;">🔥 Trending Tags</h6>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="btn btn-sm btn-primary">#AI</span>
+              <span class="btn btn-sm btn-primary">#SaaS</span>
+              <span class="btn btn-sm btn-primary">#Funding</span>
+              <span class="btn btn-sm btn-primary">#EdTech</span>
+              <span class="btn btn-sm btn-primary">#Cofounder</span>
+              <span class="btn btn-sm btn-primary">#FinTech</span>
+              <span class="btn btn-sm btn-primary">#GreenTech</span>
+            </div>
+          </div>
+
+        </div><!-- end bottom section -->
+
+      </div><!-- end outer column flex -->
+    </div>
+
+    <footer><p>© 2026 StartupSphere. Built for innovators 🚀</p></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <style>
+      /* Force input text to always be visible regardless of Bootstrap override */
+      .form-control,
+      .form-control:focus,
+      input.form-control,
+      textarea.form-control {
+        color: #f0f0ff !important;
+        -webkit-text-fill-color: #f0f0ff !important;
+        background: rgba(255,255,255,0.07) !important;
+        caret-color: #b39dff !important;
+      }
+      [data-theme="light"] .form-control,
+      [data-theme="light"] .form-control:focus,
+      [data-theme="light"] input.form-control,
+      [data-theme="light"] textarea.form-control {
+        color: #100f2e !important;
+        -webkit-text-fill-color: #100f2e !important;
+        background: #ffffff !important;
+        caret-color: #5148e8 !important;
+      }
+      .form-control::placeholder { color: rgba(180,180,240,0.45) !important; opacity: 1; }
+    </style>
+    <script>
+      /* ── Reply counts tracker ── */
+      const replyCounts = { 'replies-1': 1, 'replies-2': 0, 'replies-3': 0 };
+
+      /* ── Toggle reply section open/close ── */
+      function toggleReplies(id) {
+        const section = document.getElementById(id);
+        const isOpen = section.style.display === 'block';
+        section.style.display = isOpen ? 'none' : 'block';
+        if (!isOpen) {
+          // Auto-focus the input when opened
+          const input = document.getElementById('reply-input-' + id);
+          if (input) setTimeout(() => input.focus(), 50);
+        }
+      }
+
+      /* ── Send a reply ── */
+      function sendReply(threadId, username) {
+        const input = document.getElementById('reply-input-' + threadId);
+        if (!input) return;
+        const text = input.value.trim();
+
+        // If empty — shake border red
+        if (!text) {
+          input.style.borderColor = '#ef4444';
+          input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.18)';
+          setTimeout(() => { input.style.borderColor = ''; input.style.boxShadow = ''; }, 1500);
+          input.focus();
+          return;
+        }
+
+        // Find the dynamic replies container — it sits inside the same replies section
+        const section = document.getElementById(threadId);
+        const container = section.querySelector('[id^="dynamic-replies-"]');
+        if (!container) return;
+
+        const initials = username === 'You' ? 'YO' : username.split(' ').map(w => w[0]).join('').toUpperCase();
+
+        const replyEl = document.createElement('div');
+        replyEl.style.cssText = 'display:flex;gap:10px;margin-bottom:12px;animation:fadeUp 0.35s ease both;';
+        replyEl.innerHTML = `
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#ff6bde);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;">${initials}</div>
+          <div style="background:rgba(108,99,255,0.08);border:1px solid rgba(139,92,246,0.35);border-radius:10px;padding:10px 14px;flex:1;">
+            <div style="font-size:12px;font-weight:600;margin-bottom:4px;color:#f0f0ff;">${username} <span style="font-weight:400;color:rgba(180,180,240,0.4);">· Just now</span></div>
+            <p style="font-size:13px;color:rgba(210,210,255,0.75);margin:0;">${escapeHtml(text)}</p>
+          </div>`;
+        container.appendChild(replyEl);
+
+        // Clear input & refocus
+        input.value = '';
+        input.focus();
+
+        // Update reply count badge
+        replyCounts[threadId] = (replyCounts[threadId] || 0) + 1;
+        const countEl = document.getElementById('reply-count-' + threadId);
+        if (countEl) countEl.textContent = `💬 ${replyCounts[threadId]} ${replyCounts[threadId] === 1 ? 'Reply' : 'Replies'}`;
+
+        // Smooth scroll to new reply
+        replyEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      /* ── Sanitize user input ── */
+      function escapeHtml(str) {
+        const d = document.createElement('div');
+        d.textContent = str;
+        return d.innerHTML;
+      }
+
+      /* ── Tab switching ── */
+      function setTab(btn, type) {
+        document.querySelectorAll('.forum-tab').forEach(t => {
+          t.style.background = 'transparent';
+          t.style.color = 'var(--text2)';
+          t.style.fontWeight = '400';
+        });
+        btn.style.background = 'var(--accent-grad)';
+        btn.style.color = '#fff';
+        btn.style.fontWeight = '600';
+      }
+
+      /* ── New post form toggle ── */
+      function toggleNewPostForm() {
+        const form = document.getElementById('new-post-form');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        if (form.style.display === 'block') document.getElementById('new-post-title').focus();
+      }
+
+      /* ── Post new thread ── */
+      function postThread() {
+        const title = document.getElementById('new-post-title').value.trim();
+        const body  = document.getElementById('new-post-body').value.trim();
+        const cat   = document.getElementById('new-post-category').value;
+
+        if (!title || !body) {
+          [document.getElementById('new-post-title'), document.getElementById('new-post-body')].forEach(el => {
+            if (!el.value.trim()) {
+              el.style.borderColor = '#ef4444';
+              el.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.18)';
+              setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 1800);
+            }
+          });
+          return;
+        }
+
+        const threadId = 'replies-dyn-' + Date.now();
+        const list = document.getElementById('threads-list');
+
+        const card = document.createElement('div');
+        card.className = 'glass-card';
+        card.style.animation = 'fadeUp 0.4s ease both';
+        card.innerHTML = `
+          <div style="display:flex;gap:12px;align-items:flex-start;cursor:pointer;" onclick="toggleReplies('${threadId}')">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#6c63ff,#ff6bde);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;flex-shrink:0;">YO</div>
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;">
+                <span style="font-size:13px;font-weight:600;color:var(--text);">You</span>
+                <span class="badge bg-primary">${escapeHtml(cat)}</span>
+                <span style="font-size:12px;color:var(--text3);">Just now</span>
+              </div>
+              <h5 style="font-size:15px;margin-bottom:6px;">${escapeHtml(title)}</h5>
+              <p style="font-size:13px;color:var(--text2);">${escapeHtml(body)}</p>
+              <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--text3);">
+                <span>👍 0 Likes</span>
+                <span id="reply-count-${threadId}">💬 0 Replies</span>
+                <span>👀 1 View</span>
+              </div>
+            </div>
+          </div>
+          <div id="${threadId}" style="display:none;margin-top:16px;border-top:1px solid var(--border);padding-top:16px;">
+            <div id="dynamic-replies-${threadId.replace('replies-','').replace('-','_')}"></div>
+            <div style="display:flex;gap:8px;margin-top:10px;">
+              <input id="reply-input-${threadId}" class="form-control" placeholder="Write a reply..." style="font-size:13px;" onkeydown="if(event.key==='Enter')sendReply('${threadId}','You')" />
+              <button class="btn btn-primary btn-sm" onclick="sendReply('${threadId}','You')">Send</button>
+            </div>
+          </div>`;
+
+        // Fix: dynamic replies container id must match sendReply lookup
+        // Override sendReply to handle dynamic threads
+        replyCounts[threadId] = 0;
+
+        list.insertBefore(card, list.firstChild);
+        document.getElementById('new-post-title').value = '';
+        document.getElementById('new-post-body').value = '';
+        document.getElementById('new-post-form').style.display = 'none';
+
+        // Re-patch: the dynamic container inside new card
+        const dynDiv = card.querySelector('[id^="dynamic-replies-"]');
+        if (dynDiv) dynDiv.id = 'dynamic-replies-' + threadId;
+      }
+    </script>
+  </body>
+</html>

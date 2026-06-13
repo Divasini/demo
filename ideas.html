@@ -1,0 +1,248 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Ideas | StartupSphere</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body data-theme="dark">
+
+  <!-- NAVBAR -->
+  <nav class="navbar premium-nav">
+    <div class="container">
+      <a class="logo" href="index.html"><i class="fa-solid fa-rocket"></i> StartupSphere</a>
+      <div class="nav-menu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="ideas.html" class="active"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+        <a href="forum.html"><i class="fa-solid fa-users"></i> Community</a>
+        <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+      </div>
+      <div class="nav-actions">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+        <button onclick="toggleTheme()" class="btn btn-dark theme-toggle-btn">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="container section" style="position:relative;z-index:1;">
+
+    <!-- HEADER -->
+    <div class="glass-card mb-4" style="animation:fadeUp 0.6s ease both;">
+      <h2>💡 Explore Startup Ideas</h2>
+      <p class="muted">Discover trending startup ideas from innovators worldwide.</p>
+    </div>
+
+    <!-- SEARCH + FILTER -->
+    <div class="row mb-4 g-4">
+      <div class="col-md-8">
+        <input class="form-control" id="search-input" placeholder="🔍 Search startup ideas...">
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" id="category-filter">
+          <option value="">All Categories</option>
+          <option value="AI">AI & Tech</option>
+          <option value="Education">Education</option>
+          <option value="Finance">Finance</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Green">Green</option>
+          <option value="Marketplace">Marketplace</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- CATEGORY CHIPS -->
+    <div class="mb-4" style="display:flex;flex-wrap:wrap;gap:8px;">
+      <button class="btn btn-sm btn-primary category-chip active" data-cat="">All</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="AI">AI</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="Education">Education</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="Finance">Finance</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="Healthcare">Health</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="Green">Green</button>
+      <button class="btn btn-sm btn-primary category-chip" data-cat="Marketplace">Marketplace</button>
+    </div>
+
+    <!-- IDEAS GRID -->
+    <div class="row g-4" id="ideas-grid">
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="AI" data-reveal>
+          <span class="mb-2">AI</span>
+          <h5>AI Tutor App</h5>
+          <p class="muted">Personal AI learning assistant for students worldwide.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 120 Likes &nbsp;|&nbsp; 👀 1.2K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="AI" data-reveal>
+          <span class="mb-2">IoT</span>
+          <h5>Smart Farming AI</h5>
+          <p class="muted">IoT based agriculture solution for modern farmers.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 98 Likes &nbsp;|&nbsp; 👀 900 Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Marketplace" data-reveal>
+          <span class="mb-2">Marketplace</span>
+          <h5>Freelance Hub</h5>
+          <p class="muted">Connect freelancers & startups seamlessly.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 210 Likes &nbsp;|&nbsp; 👀 2.1K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Green" data-reveal>
+          <span class="mb-2">Green</span>
+          <h5>Eco Delivery System</h5>
+          <p class="muted">Sustainable green logistics platform.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 75 Likes &nbsp;|&nbsp; 👀 650 Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Healthcare" data-reveal>
+          <span class="mb-2">Healthcare</span>
+          <h5>Health Tracker AI</h5>
+          <p class="muted">Smart AI health monitoring application.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 180 Likes &nbsp;|&nbsp; 👀 1.5K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Marketplace" data-reveal>
+          <span class="mb-2">Marketplace</span>
+          <h5>Skill Marketplace</h5>
+          <p class="muted">Sell & learn digital skills online.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 140 Likes &nbsp;|&nbsp; 👀 1.1K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="AI" data-reveal>
+          <span class="category-word">AI</span>
+          <h5>AI Resume Builder</h5>
+          <p class="muted">Generate professional resumes instantly with AI.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 300 Likes &nbsp;|&nbsp; 👀 3K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Finance" data-reveal>
+          <span class="mb-2">Finance</span>
+          <h5>Startup Funding Hub</h5>
+          <p class="muted">Connect investors & founders efficiently.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 260 Likes &nbsp;|&nbsp; 👀 2.4K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Education" data-reveal>
+          <span class="mb-2">Education</span>
+          <h5>Virtual Internship Platform</h5>
+          <p class="muted">Remote internship marketplace for students.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 190 Likes &nbsp;|&nbsp; 👀 1.8K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Finance" data-reveal>
+          <span class=" mb-2">Finance</span>
+          <h5>Smart Budget App</h5>
+          <p class="muted">AI powered personal finance tracker.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 220 Likes &nbsp;|&nbsp; 👀 2K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="Marketplace" data-reveal>
+          <span class="mb-2">Marketplace</span>
+          <h5>Local Business Booster</h5>
+          <p class="muted">Help local shops go digital easily.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 110 Likes &nbsp;|&nbsp; 👀 1K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="glass-card idea-card" data-cat="AI" data-reveal>
+          <span class="mb-2">AI</span>
+          <h5>AI Content Generator</h5>
+          <p class="muted">Create blogs & social posts using AI.</p>
+          <p style="font-size:13px;color:var(--accent2);margin:10px 0;">❤️ 350 Likes &nbsp;|&nbsp; 👀 3.5K Views</p>
+          <a href="idea-details.html" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+
+    </div>
+    <!-- No results message -->
+    <div id="no-results" style="display:none;text-align:center;padding:48px 0;color:var(--text3);">
+      <div style="font-size:48px;margin-bottom:12px;">🔍</div>
+      <p>No ideas found. Try a different search.</p>
+    </div>
+
+  </div>
+
+  <footer><p>© 2026 StartupSphere. Built for innovators 🚀</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    // Category chip + search filter
+    const chips = document.querySelectorAll('.category-chip');
+    const cards = document.querySelectorAll('.idea-card');
+    const searchInput = document.getElementById('search-input');
+    const catSelect = document.getElementById('category-filter');
+    let activeCat = '';
+
+    function filterCards() {
+      const query = searchInput.value.toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const cat = card.dataset.cat || '';
+        const title = card.querySelector('h5').textContent.toLowerCase();
+        const desc  = card.querySelector('p').textContent.toLowerCase();
+        const matchCat = !activeCat || cat === activeCat;
+        const matchSearch = !query || title.includes(query) || desc.includes(query);
+        const show = matchCat && matchSearch;
+        card.closest('.col-md-4').style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCat = chip.dataset.cat;
+        catSelect.value = activeCat;
+        filterCards();
+      });
+    });
+
+    catSelect.addEventListener('change', () => {
+      activeCat = catSelect.value;
+      chips.forEach(c => c.classList.toggle('active', c.dataset.cat === activeCat));
+      filterCards();
+    });
+
+    searchInput.addEventListener('input', filterCards);
+  </script>
+  </body>
+  </html>

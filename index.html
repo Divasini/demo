@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartupSphere - Share Startup Ideas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+
+<!-- PARTICLES BACKGROUND -->
+<canvas id="particles" style="position:fixed;top:0;left:0;pointer-events:none;z-index:0;"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar premium-nav">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <i class="fa-solid fa-rocket"></i> StartupSphere
+    </a>
+    <div class="nav-menu">
+      <a href="index.html" class="active"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="ideas.html"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+      <a href="forum.html"><i class="fa-solid fa-users"></i> Community</a>
+      <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">Login</a>
+      <a href="signup.html" class="btn btn-primary">Get Started</a>
+      <button onclick="toggleTheme()" class="btn btn-dark theme-toggle-btn">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="position:relative;z-index:1;">
+  <!-- <div class="floating-card card1">💡 AI Startup</div>
+  <div class="floating-card card2">🚀 Trending Idea</div>
+  <div class="floating-card card3">📈 Funding Ready</div> -->
+
+  <div class="hero-badge">🌟 Join 15,000+ Innovators</div>
+  <h1>Launch Your <span class="gradient-text">Dream Startup</span></h1>
+  <p>Discover innovative startup ideas, connect with founders, and build the future together.</p>
+  <div class="mt-4">
+    <a href="ideas.html" class="btn btn-light me-2">Explore Ideas</a>
+    <a href="submit-idea.html" class="btn btn-primary">Submit Idea 🚀</a>
+  </div>
+  <div class="hero-stats">
+    <span>🚀 <strong>8500+</strong> Ideas</span>
+    <span>👥 <strong>15K+</strong> Users</span>
+    <span>🌎 <strong>75</strong> Countries</span>
+  </div>
+</section>
+
+<!-- WHY STARTUPSPHERE -->
+<section class="section container" style="position:relative;z-index:1;">
+  <h2 class="text-center mb-5">Why StartupSphere?</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:32px;margin-bottom:12px;">💡</div>
+        <h5>Share Ideas</h5>
+        <p class="muted">Post your startup ideas instantly to a global audience.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:32px;margin-bottom:12px;">🤝</div>
+        <h5>Find Co-founders</h5>
+        <p class="muted">Connect with innovators and builders worldwide.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:32px;margin-bottom:12px;">📊</div>
+        <h5>Track Growth</h5>
+        <p class="muted">See real-time engagement analytics for your ideas.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center" data-reveal>
+        <div style="font-size:32px;margin-bottom:12px;">🚀</div>
+        <h5>Launch Faster</h5>
+        <p class="muted">Turn ideas into real startups with community support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRENDING IDEAS -->
+<section class="section container" style="position:relative;z-index:1;">
+  <h2 class="mb-4 text-center">
+  🔥 Trending Ideas
+</h2>
+  <div class="row g-4">
+    <div class="col-md-3">
+      <div class="glass-card" data-reveal>
+        <span class="badge bg-primary mb-2">AI</span>
+        <h5>AI Tutor App</h5>
+        <p class="muted">Smart AI learning assistant</p>
+        <p style="font-size:13px;color:var(--accent2);margin-top:10px;">❤️ 120 · 👀 1.2K</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card" data-reveal>
+        <span class="badge bg-primary mb-2">IoT</span>
+        <h5>Smart Farming</h5>
+        <p class="muted">IoT agriculture system</p>
+        <p style="font-size:13px;color:var(--accent2);margin-top:10px;">❤️ 98 · 👀 900</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card" data-reveal>
+        <span class="badge bg-primary mb-2">Marketplace</span>
+        <h5>Freelance Hub</h5>
+        <p class="muted">Connect freelancers & startups</p>
+        <p style="font-size:13px;color:var(--accent2);margin-top:10px;">❤️ 210 · 👀 2.1K</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+
+      <div class="glass-card" data-reveal>
+        <span class="badge bg-primary mb-2">Green</span>
+        <h5>Eco Delivery</h5>
+        <p class="muted">Green logistics platform</p>
+        <p style="font-size:13px;color:var(--accent2);margin-top:10px;">❤️ 75 · 👀 650</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS / COUNTERS -->
+<section class="section text-center" style="position:relative;z-index:1;">
+  <h2 class="mb-5">📊 Platform Growth</h2>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="glass-card" data-reveal>
+          <h2 class="counter" data-target="15000">0</h2>
+          <p class="muted">Users</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-card" data-reveal>
+          <h2 class="counter" data-target="8500">0</h2>
+          <p class="muted">Ideas</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-card" data-reveal>
+          <h2 class="counter" data-target="1200">0</h2>
+          <p class="muted">Startups</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="glass-card" data-reveal>
+          <h2 class="counter" data-target="75">0</h2>
+          <p class="muted">Countries</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section container" style="position:relative;z-index:1;">
+  <h2 class="text-center mb-4">💬 What Users Say</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="glass-card testimonial-card" data-reveal>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:16px;">"StartupSphere helped me find my co-founder in just 2 weeks. Incredible platform!"</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;">AK</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);">Arjun Kumar</div>
+            <div style="font-size:12px;color:var(--text3);">Founder, AI Tutor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card testimonial-card" data-reveal>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:16px;">"Best platform for startup idea sharing. The community feedback is invaluable."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#06b6d4,#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;">MP</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);">Meena Priya</div>
+            <div style="font-size:12px;color:var(--text3);">Product Designer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card testimonial-card" data-reveal>
+        <p style="color:var(--text2);font-size:15px;line-height:1.7;margin-bottom:16px;">"Amazing UI and a startup community that actually helps you grow fast!"</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#10b981,#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:14px;">RV</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--text);">Rahul V</div>
+            <div style="font-size:12px;color:var(--text3);">Full Stack Dev</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section text-center" style="position:relative;z-index:1;">
+  <div class="container">
+    <div class="glass-card" data-reveal style="max-width:560px;margin:0 auto;padding:48px 32px;border-color:var(--border2);">
+      <h2 style="font-size:28px;margin-bottom:12px;">Ready to build your startup idea?</h2>
+      <p class="muted" style="margin-bottom:28px;">Join thousands of innovators today.</p>
+      <a href="signup.html" class="btn btn-primary" style="padding:13px 36px;font-size:16px;">Get Started Free 🚀</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 1 — HOW STARTUPSPHERE WORKS -->
+<section class="section container" style="position:relative;z-index:1;">
+  <div class="text-center mb-5">
+    <span style="display:inline-block;padding:6px 18px;border-radius:20px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.28);font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">Simple Process</span>
+    <h2>How StartupSphere Works</h2>
+    <p class="muted" style="max-width:480px;margin:12px auto 0;">From idea to launch in three simple steps. Join thousands already building their startups.</p>
+  </div>
+
+  <div class="row g-4" style="align-items:stretch;">
+    <!-- Step 1 -->
+    <div class="col-md-4">
+      <div class="glass-card text-center" data-reveal style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="position:relative;display:inline-block;">
+          <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,rgba(108,99,255,0.25),rgba(155,89,245,0.15));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto;box-shadow:0 0 30px rgba(108,99,255,0.2);">💡</div>
+          <div style="position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;box-shadow:0 0 12px rgba(108,99,255,0.5);">1</div>
+        </div>
+        <div>
+          <h5 style="margin-bottom:8px;font-size:17px;">Share Your Startup Idea</h5>
+          <p class="muted" style="font-size:13px;line-height:1.7;">Write up your idea in minutes. Add a title, category, and description — then post it to a global audience of innovators ready to engage.</p>
+        </div>
+        <div style="width:40px;height:2px;background:var(--accent-grad);border-radius:2px;margin-top:4px;"></div>
+      </div>
+    </div>
+
+    <!-- Connector arrow (desktop only) -->
+    <div class="col-md-4" style="position:relative;">
+      <!-- Step 2 -->
+      <div class="glass-card text-center" data-reveal style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="position:relative;display:inline-block;">
+          <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,rgba(155,89,245,0.25),rgba(255,107,222,0.15));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto;box-shadow:0 0 30px rgba(155,89,245,0.2);">🤝</div>
+          <div style="position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;box-shadow:0 0 12px rgba(108,99,255,0.5);">2</div>
+        </div>
+        <div>
+          <h5 style="margin-bottom:8px;font-size:17px;">Connect With Innovators</h5>
+          <p class="muted" style="font-size:13px;line-height:1.7;">Get feedback, find co-founders, meet investors. Our community of 15K+ builders actively collaborates, votes, and comments on ideas every day.</p>
+        </div>
+        <div style="width:40px;height:2px;background:var(--accent-grad);border-radius:2px;margin-top:4px;"></div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="col-md-4">
+      <div class="glass-card text-center" data-reveal style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div style="position:relative;display:inline-block;">
+          <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,rgba(255,107,222,0.22),rgba(108,99,255,0.15));border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto;box-shadow:0 0 30px rgba(255,107,222,0.18);">🚀</div>
+          <div style="position:absolute;top:-10px;right:-10px;width:26px;height:26px;border-radius:50%;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;box-shadow:0 0 12px rgba(108,99,255,0.5);">3</div>
+        </div>
+        <div>
+          <h5 style="margin-bottom:8px;font-size:17px;">Build And Launch</h5>
+          <p class="muted" style="font-size:13px;line-height:1.7;">Use community momentum, analytics, and investor visibility to turn your validated idea into a real startup — faster than going it alone.</p>
+        </div>
+        <div style="width:40px;height:2px;background:var(--accent-grad);border-radius:2px;margin-top:4px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 2 — FREE VS PREMIUM PRICING -->
+<section class="section" style="position:relative;z-index:1;background:linear-gradient(180deg,transparent 0%,rgba(108,99,255,0.04) 50%,transparent 100%);">
+  <div class="container">
+    <div class="text-center mb-5">
+      <span style="display:inline-block;padding:6px 18px;border-radius:20px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.28);font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">Pricing</span>
+      <h2>Simple, Transparent Plans</h2>
+      <p class="muted" style="max-width:440px;margin:12px auto 0;">Start free. Upgrade when you're ready to grow.</p>
+    </div>
+
+    <div class="row g-4" style="align-items:stretch;justify-content:center;">
+
+      <!-- FREE PLAN -->
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal style="height:100%;display:flex;flex-direction:column;">
+          <div style="margin-bottom:22px;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);">Free</span>
+            <div style="margin-top:10px;">
+              <span style="font-size:38px;font-weight:900;color:var(--text);">₹0</span>
+              <span style="color:var(--text3);font-size:13px;"> / forever</span>
+            </div>
+            <p class="muted" style="font-size:13px;margin-top:8px;">Perfect to get started and explore the community.</p>
+          </div>
+          <ul style="list-style:none;padding:0;flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Share up to 3 startup ideas</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Community access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Basic profile</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Standard visibility</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);"><span style="color:var(--text3);font-weight:700;">✖</span> Unlimited ideas</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);"><span style="color:var(--text3);font-weight:700;">✖</span> Analytics dashboard</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text3);"><span style="color:var(--text3);font-weight:700;">✖</span> Investor visibility</li>
+          </ul>
+          <a href="signup.html" class="btn btn-light w-100" style="margin-top:auto;">Get Started Free</a>
+        </div>
+      </div>
+
+      <!-- PRO MONTHLY — MOST POPULAR -->
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal style="height:100%;display:flex;flex-direction:column;border-color:var(--border2);background:rgba(108,99,255,0.10);box-shadow:0 0 0 1px rgba(108,99,255,0.35),var(--shadow-lg);position:relative;overflow:visible;">
+          <!-- Most Popular badge -->
+          <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent-grad);color:#fff;font-size:11px;font-weight:800;padding:5px 18px;border-radius:20px;letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;box-shadow:0 4px 18px rgba(108,99,255,0.45);">⭐ Most Popular</div>
+          <div style="margin-bottom:22px;margin-top:10px;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent2);">Pro Monthly</span>
+            <div style="margin-top:10px;">
+              <span style="font-size:38px;font-weight:900;background:var(--hero-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">₹299</span>
+              <span style="color:var(--text3);font-size:13px;"> / month</span>
+            </div>
+            <p class="muted" style="font-size:13px;margin-top:8px;">Everything you need to grow fast and get noticed.</p>
+          </div>
+          <ul style="list-style:none;padding:0;flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Unlimited idea submissions</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Priority visibility</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Premium profile badge</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Analytics dashboard</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Investor visibility</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Community access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Basic profile</li>
+          </ul>
+          <a href="signup.html" class="btn btn-primary w-100" style="margin-top:auto;">Upgrade To Pro 🚀</a>
+        </div>
+      </div>
+
+      <!-- PREMIUM YEARLY -->
+      <div class="col-md-4">
+        <div class="glass-card" data-reveal style="height:100%;display:flex;flex-direction:column;">
+          <div style="margin-bottom:22px;">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent3);">Premium Yearly</span>
+            <div style="margin-top:10px;">
+              <span style="font-size:38px;font-weight:900;color:var(--text);">₹2,499</span>
+              <span style="color:var(--text3);font-size:13px;"> / year</span>
+            </div>
+            <p class="muted" style="font-size:13px;margin-top:8px;">The full StartupSphere experience. Save ₹1,089 vs monthly.</p>
+          </div>
+          <ul style="list-style:none;padding:0;flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Everything in Pro</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Featured startup listing</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Founder verification badge</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Exclusive networking access</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> AI startup insights</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text2);"><span style="color:#34d399;font-weight:700;">✔</span> Priority support</li>
+            <li style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--accent3);font-weight:600;"><span>🔥</span> Best value — 30% off</li>
+          </ul>
+          <a href="signup.html" class="btn w-100" style="background:linear-gradient(135deg,rgba(255,107,222,0.15),rgba(108,99,255,0.15));border:1px solid rgba(255,107,222,0.4);color:var(--accent3);font-weight:700;margin-top:auto;" onmouseover="this.style.background='linear-gradient(135deg,rgba(255,107,222,0.28),rgba(108,99,255,0.22))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(255,107,222,0.15),rgba(108,99,255,0.15))'">Go Premium ✨</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 3 — WHY UPGRADE (COMPARISON TABLE) -->
+<section class="section container" style="position:relative;z-index:1;">
+  <div class="text-center mb-5">
+    <span style="display:inline-block;padding:6px 18px;border-radius:20px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.28);font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">Comparison</span>
+    <h2>Why Upgrade?</h2>
+    <p class="muted" style="max-width:420px;margin:12px auto 0;">See exactly what you unlock when you go Pro.</p>
+  </div>
+
+  <div class="glass-card" data-reveal style="padding:0;overflow:hidden;">
+    <div style="overflow-x:auto;">
+      <table class="table table-dark" style="margin:0;min-width:560px;">
+        <thead>
+          <tr style="background:rgba(108,99,255,0.06);">
+            <th style="padding:18px 24px;font-size:13px;color:var(--text2);width:55%;">Feature</th>
+            <th style="padding:18px 16px;text-align:center;">
+              <span style="font-size:12px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;">Free</span>
+            </th>
+            <th style="padding:18px 16px;text-align:center;background:rgba(108,99,255,0.08);">
+              <span style="font-size:12px;font-weight:700;color:var(--accent2);text-transform:uppercase;letter-spacing:0.07em;">⭐ Premium</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Startup idea submissions</td>
+            <td style="padding:15px 16px;text-align:center;font-size:14px;color:var(--text3);">3 only</td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔ Unlimited</span></td>
+          </tr>
+          <tr style="background:rgba(108,99,255,0.025);">
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Community access</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:#34d399;font-weight:700;">✔</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr>
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Basic profile</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:#34d399;font-weight:700;">✔</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr style="background:rgba(108,99,255,0.025);">
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Analytics dashboard</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr>
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Priority visibility</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr style="background:rgba(108,99,255,0.025);">
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Featured listing</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr>
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Investor access</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr style="background:rgba(108,99,255,0.025);">
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Founder verification badge</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+          <tr>
+            <td style="padding:15px 24px;color:var(--text2);font-size:14px;">Premium profile badge</td>
+            <td style="padding:15px 16px;text-align:center;"><span style="color:var(--text3);font-weight:700;">✖</span></td>
+            <td style="padding:15px 16px;text-align:center;background:rgba(108,99,255,0.04);"><span style="color:#34d399;font-weight:700;">✔</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 4 — FAQ ACCORDION -->
+<section class="section container" style="position:relative;z-index:1;">
+  <div class="text-center mb-5">
+    <span style="display:inline-block;padding:6px 18px;border-radius:20px;background:rgba(108,99,255,0.12);border:1px solid rgba(108,99,255,0.28);font-size:12px;font-weight:700;color:var(--accent2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:18px;">FAQ</span>
+    <h2>Frequently Asked Questions</h2>
+    <p class="muted" style="max-width:400px;margin:12px auto 0;">Everything you need to know before diving in.</p>
+  </div>
+
+  <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
+
+    <!-- FAQ Item 1 -->
+    <div class="glass-card ss-faq-item" data-reveal style="padding:0;cursor:pointer;" onclick="ssFaqToggle(this)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;gap:16px;">
+        <span style="font-size:15px;font-weight:600;color:var(--text);">How many ideas can I share for free?</span>
+        <span class="ss-faq-icon" style="color:var(--accent2);font-size:18px;flex-shrink:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">＋</span>
+      </div>
+      <div class="ss-faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;">
+        <p style="color:var(--text2);font-size:14px;line-height:1.75;padding-bottom:20px;">On the Free plan, you can submit up to 3 startup ideas. They'll be visible to the entire StartupSphere community and receive votes, comments, and feedback just like any other idea.</p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 2 -->
+    <div class="glass-card ss-faq-item" data-reveal style="padding:0;cursor:pointer;" onclick="ssFaqToggle(this)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;gap:16px;">
+        <span style="font-size:15px;font-weight:600;color:var(--text);">What happens after 3 idea submissions?</span>
+        <span class="ss-faq-icon" style="color:var(--accent2);font-size:18px;flex-shrink:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">＋</span>
+      </div>
+      <div class="ss-faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;">
+        <p style="color:var(--text2);font-size:14px;line-height:1.75;padding-bottom:20px;">Once you've submitted 3 ideas on the Free plan, you'll be prompted to upgrade to Pro for unlimited submissions. Your existing ideas remain live and continue receiving community engagement.</p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 3 -->
+    <div class="glass-card ss-faq-item" data-reveal style="padding:0;cursor:pointer;" onclick="ssFaqToggle(this)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;gap:16px;">
+        <span style="font-size:15px;font-weight:600;color:var(--text);">Can I upgrade anytime?</span>
+        <span class="ss-faq-icon" style="color:var(--accent2);font-size:18px;flex-shrink:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">＋</span>
+      </div>
+      <div class="ss-faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;">
+        <p style="color:var(--text2);font-size:14px;line-height:1.75;padding-bottom:20px;">Yes, absolutely. You can upgrade from Free to Pro Monthly or Premium Yearly at any point from your dashboard. Your plan activates instantly and all premium features become available right away.</p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 4 -->
+    <div class="glass-card ss-faq-item" data-reveal style="padding:0;cursor:pointer;" onclick="ssFaqToggle(this)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;gap:16px;">
+        <span style="font-size:15px;font-weight:600;color:var(--text);">Can investors see my ideas?</span>
+        <span class="ss-faq-icon" style="color:var(--accent2);font-size:18px;flex-shrink:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">＋</span>
+      </div>
+      <div class="ss-faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;">
+        <p style="color:var(--text2);font-size:14px;line-height:1.75;padding-bottom:20px;">Pro and Premium members get investor visibility, meaning your ideas are listed in our curated investor feed. Our verified network of angel investors and VCs actively browses this feed to discover early-stage startups.</p>
+      </div>
+    </div>
+
+    <!-- FAQ Item 5 -->
+    <div class="glass-card ss-faq-item" data-reveal style="padding:0;cursor:pointer;" onclick="ssFaqToggle(this)">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;gap:16px;">
+        <span style="font-size:15px;font-weight:600;color:var(--text);">Is StartupSphere suitable for students?</span>
+        <span class="ss-faq-icon" style="color:var(--accent2);font-size:18px;flex-shrink:0;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);">＋</span>
+      </div>
+      <div class="ss-faq-body" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;">
+        <p style="color:var(--text2);font-size:14px;line-height:1.75;padding-bottom:20px;">Definitely. Many of our most-loved ideas come from students. StartupSphere is built for anyone with a bold idea — whether you're in college, at your first job, or an experienced founder. The Free plan is a great way to start with zero risk.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECTION 5 — FINAL PREMIUM CTA -->
+<section class="section" style="position:relative;z-index:1;padding-bottom:100px;">
+  <div class="container">
+    <div class="glass-card" data-reveal style="max-width:680px;margin:0 auto;text-align:center;padding:64px 40px;border-color:var(--border2);background:rgba(108,99,255,0.07);box-shadow:0 0 80px rgba(108,99,255,0.12),var(--shadow-lg);position:relative;overflow:hidden;">
+
+      <!-- Glow orb behind card -->
+      <div style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:320px;height:260px;background:radial-gradient(ellipse,rgba(108,99,255,0.22) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
+
+      <div style="position:relative;z-index:1;">
+        <div style="font-size:44px;margin-bottom:20px;line-height:1;">🚀</div>
+        <h2 style="font-size:clamp(22px,3.5vw,32px);font-weight:800;margin-bottom:14px;letter-spacing:-0.02em;">Ready To Turn Your Idea Into A Startup?</h2>
+        <p style="color:var(--text2);font-size:15px;line-height:1.75;max-width:480px;margin:0 auto 36px;">Join innovators, founders, developers and investors from around the world — and build the startup you've always imagined.</p>
+
+        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:14px;">
+          <a href="signup.html" class="btn btn-light" style="padding:13px 30px;font-size:15px;">Start Free</a>
+          <a href="signup.html" class="btn btn-primary" style="padding:13px 30px;font-size:15px;">Upgrade To Pro ⭐</a>
+        </div>
+
+        <p style="color:var(--text3);font-size:12px;margin-top:22px;">No credit card required for free plan · Cancel anytime</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FAQ Accordion Script -->
+<script>
+  function ssFaqToggle(item) {
+    var body = item.querySelector('.ss-faq-body');
+    var icon = item.querySelector('.ss-faq-icon');
+    var isOpen = body.style.maxHeight && body.style.maxHeight !== '0px';
+
+    // Close all
+    document.querySelectorAll('.ss-faq-item').forEach(function(el) {
+      el.querySelector('.ss-faq-body').style.maxHeight = '0px';
+      el.querySelector('.ss-faq-icon').style.transform = 'rotate(0deg)';
+      el.querySelector('.ss-faq-icon').textContent = '＋';
+      el.style.borderColor = 'var(--border)';
+    });
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+      icon.style.transform = 'rotate(45deg)';
+      icon.textContent = '＋';
+      item.style.borderColor = 'var(--border2)';
+    }
+  }
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 StartupSphere. Built for innovators 🚀</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+  // Particles
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  for (let i = 0; i < 55; i++) {
+    particles.push({ x: Math.random()*2000, y: Math.random()*2000, r: Math.random()*1.4+0.3, vx: (Math.random()-0.5)*0.25, vy: (Math.random()-0.5)*0.25, o: Math.random()*0.45+0.1 });
+  }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(99,102,241,${p.o})`; ctx.fill();
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+
+</script>
+</body>
+</html>

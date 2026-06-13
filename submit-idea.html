@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Idea | StartupSphere</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+
+<nav class="navbar premium-nav">
+  <div class="container">
+    <a class="logo" href="index.html"><i class="fa-solid fa-rocket"></i> StartupSphere</a>
+    <div class="nav-menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a href="ideas.html"><i class="fa-solid fa-lightbulb"></i> Ideas</a>
+      <a href="forum.html"><i class="fa-solid fa-users"></i> Community</a>
+      <a href="dashboard.html"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+    </div>
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">Login</a>
+      <a href="signup.html" class="btn btn-primary">Get Started</a>
+      <button onclick="toggleTheme()" class="btn btn-dark theme-toggle-btn">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container section d-flex justify-content-center">
+  <div class="glass-card" style="width:100%;max-width:700px;animation:fadeUp 0.6s ease both;">
+
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-size:48px;margin-bottom:12px;">💡</div>
+      <h2 style="font-size:26px;margin-bottom:8px;">Submit Your Startup Idea</h2>
+      <p class="muted">Share your vision with 15,000+ innovators.</p>
+    </div>
+
+    <!-- STEP INDICATOR -->
+    <div style="display:flex;align-items:center;margin-bottom:32px;gap:0;">
+      <div class="step-dot active" id="step1-dot">1</div>
+      <div style="flex:1;height:2px;background:var(--accent-grad);border-radius:2px;" id="line1"></div>
+      <div class="step-dot" id="step2-dot">2</div>
+      <div style="flex:1;height:2px;background:var(--border);border-radius:2px;" id="line2"></div>
+      <div class="step-dot" id="step3-dot">3</div>
+    </div>
+
+    <form id="idea-form">
+
+      <!-- IDEA TITLE -->
+      <div class="mb-3">
+        <label>Idea Title *</label>
+        <input type="text" class="form-control" placeholder="e.g. AI-powered Resume Builder" required>
+      </div>
+
+      <!-- CATEGORY -->
+      <div class="mb-3">
+        <label>Category *</label>
+        <select class="form-control" required>
+          <option value="">Select a category</option>
+          <option>AI & Tech</option>
+          <option>Education</option>
+          <option>Finance</option>
+          <option>Healthcare</option>
+          <option>E-Commerce</option>
+          <option>Green & Sustainability</option>
+          <option>Marketplace</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <!-- PROBLEM -->
+      <div class="mb-3">
+        <label>Problem Statement *</label>
+        <textarea class="form-control" rows="3" placeholder="What specific problem are you solving? Be clear and concise." required></textarea>
+      </div>
+
+      <!-- SOLUTION -->
+      <div class="mb-3">
+        <label>Proposed Solution *</label>
+        <textarea class="form-control" rows="3" placeholder="How will your startup solve this problem?" required></textarea>
+      </div>
+
+      <!-- TARGET AUDIENCE -->
+      <div class="mb-3">
+        <label>Target Audience *</label>
+        <input type="text" class="form-control" placeholder="e.g. Students aged 16-25, small business owners" required>
+      </div>
+
+      <!-- REVENUE MODEL -->
+      <div class="mb-3">
+        <label>Revenue Model</label>
+        <input type="text" class="form-control" placeholder="e.g. Freemium SaaS, $9/month subscription">
+      </div>
+
+      <!-- TECH STACK -->
+      <div class="mb-3">
+        <label>Tech Stack (optional)</label>
+        <input type="text" class="form-control" placeholder="e.g. React, Node.js, OpenAI API">
+      </div>
+
+      <!-- TAGS -->
+      <div class="mb-3">
+        <label>Tags</label>
+        <input type="text" class="form-control" placeholder="AI, SaaS, Startup, Mobile (comma separated)">
+      </div>
+
+      <!-- LOOKING FOR -->
+      <div class="mb-3">
+        <label>Looking for</label>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;">
+          <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);cursor:pointer;margin:0;">
+            <input type="checkbox" style="accent-color:var(--accent);"> Co-founder
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);cursor:pointer;margin:0;">
+            <input type="checkbox" style="accent-color:var(--accent);"> Investor
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);cursor:pointer;margin:0;">
+            <input type="checkbox" style="accent-color:var(--accent);"> Developer
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);cursor:pointer;margin:0;">
+            <input type="checkbox" style="accent-color:var(--accent);"> Feedback
+          </label>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="button" class="btn btn-primary w-100" style="padding:13px;font-size:16px;margin-top:8px;" onclick="submitIdea(this)">
+        🚀 Submit Idea
+      </button>
+
+    </form>
+
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--text3);">
+      Your idea will be reviewed and published within 24 hours.
+    </p>
+
+  </div>
+</div>
+
+<footer><p>© 2026 StartupSphere. Built for innovators 🚀</p></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+  // Step dots style
+  const style = document.createElement('style');
+  style.textContent = `.step-dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:var(--card);color:var(--text3);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;transition:all 0.3s;flex-shrink:0;}.step-dot.active{background:var(--accent-grad);border-color:var(--accent);color:#fff;}`;
+  document.head.appendChild(style);
+
+  function submitIdea(btn) {
+    const inputs = document.querySelectorAll('#idea-form input[required], #idea-form select[required], #idea-form textarea[required]');
+    let valid = true;
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        input.style.borderColor = '#ef4444';
+        input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.18)';
+        valid = false;
+        setTimeout(() => { input.style.borderColor=''; input.style.boxShadow=''; }, 2500);
+      }
+    });
+    if (!valid) return;
+
+    btn.textContent = '✅ Idea Submitted!';
+    btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+    btn.disabled = true;
+    document.getElementById('step2-dot').classList.add('active');
+    document.getElementById('line1').style.background = 'var(--accent-grad)';
+    setTimeout(() => {
+      document.getElementById('step3-dot').classList.add('active');
+      document.getElementById('line2').style.background = 'var(--accent-grad)';
+    }, 600);
+    setTimeout(() => { window.location.href = 'ideas.html'; }, 2500);
+  }
+</script>
+</body>
+</html>
